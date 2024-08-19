@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Hub - Reports</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000428;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Retro Arcade Header Styling */
+        header {
+            background: linear-gradient(90deg, #00ff99, #00ccff, #ff0099);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ffcc;
+        }
+
+        header .logo {
+            width: 150px;
+            filter: drop-shadow(0 0 5px #00ff99);
+        }
+
+        header h1 {
+            font-family: 'Press Start 2P', cursive; /* Pixelated Arcade Font */
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 0px #ff0099, 4px 4px 0px #00ccff;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: #ff0099;
+            padding: 10px;
+            background: #000;
+            border-radius: 4px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ffcc;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff0099;
+            color: #00ff99;
+            transform: translateY(-5px);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff0099, #00ccff);
+            border-bottom: 4px solid #00ff99;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-banner h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            color: #000;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Featured Report Section */
+        .featured-report {
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .featured-report h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+            color: #00ff99;
+            margin-bottom: 20px;
+        }
+
+        .report-card {
+            background-color: #000;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left;
+            border: 2px solid #00ffcc;
+            max-width: 800px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .report-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .report-card h4 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5rem;
+            color: #ff0099;
+            margin-bottom: 10px;
+        }
+
+        .report-card p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        .report-card .view-button, .report-card .download-button {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .report-card .view-button {
+            background-color: #00ff99;
+            color: #000;
+        }
+
+        .report-card .view-button:hover {
+            background-color: #00ccff;
+        }
+
+        .report-card .download-button {
+            background-color: #ff0099;
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .report-card .download-button:hover {
+            background-color: #ff66cc;
+        }
+
+        /* Available Reports Section */
+        .available-reports {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .available-reports h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+            color: #00ccff;
+            margin-bottom: 20px;
+        }
+
+        .reports-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .reports-grid .report-card {
+            width: 45%;
+            margin-bottom: 30px;
+        }
+
+        /* Search and Filter Section */
+        .search-filter {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-filter input,
+        .search-filter select {
+            font-family: 'Press Start 2P', cursive;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 2px solid #00ffcc;
+            background-color: #000;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        /* Call-to-Action Section */
+        .cta {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #111;
+            margin-top: 30px;
+            border-top: 4px solid #00ff99;
+            border-radius: 8px;
+        }
+
+        .cta h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: #00ffcc;
+            margin-bottom: 20px;
+        }
+
+        .cta .cta-button {
+            background-color: #00ff99;
+            color: #000;
+            padding: 15px 30px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta .cta-button:hover {
+            background-color: #00ccff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #000;
+            color: #00ff99;
+            border-top: 2px solid #00ffcc;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-banner h2 {
+                font-size: 2rem;
+            }
+
+            .featured-report h3, .available-reports h3, .cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .reports-grid .report-card {
+                width: 90%;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<!-- Favicon .png -->
+<link rel="icon" type="image/png" href="favicon.png">
+<body>
+    <header>
+        <h1>Trader's Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="weekly_updates.html">Updates</a></li>
+                <li><a href="quarterly_reports.html">Reports</a></li>
+                <li><a href="auth.html">Login/Sign Up</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+            <h2>In-Depth Market Reports</h2>
+            <p>Access our comprehensive reports that cover market trends, analysis, and strategic insights to help you make informed trading decisions.</p>
+        </section>
+
+        <!-- Featured Report Section -->
+        <section class="featured-report">
+            <h3>Featured Report</h3>
+            <div class="report-card">
+                <h4>Quarterly Market Overview - Q2 2024</h4>
+                <p>Our detailed analysis of the market's performance in Q2 2024, including key trends, sector analysis, and forward-looking insights.</p>
+                <a href="report-details.html" class="view-button">View Report</a>
+                <a href="path/to/report.pdf" class="download-button" download>Download PDF</a>
+            </div>
+        </section>
+
+        <!-- Available Reports Section -->
+        <section class="available-reports">
+            <h3>All Available Reports</h3>
+            <div class="reports-grid">
+                <div class="report-card">
+                    <h4>Monthly Performance Report - July 2024</h4>
+                    <p>An in-depth look at the market's performance throughout July 2024, focusing on key sectors and emerging trends.</p>
+                    <a href="report-details.html" class="view-button">View Report</a>
+                    <a href="path/to/report.pdf" class="download-button" download>Download PDF</a>
+                </div>
+                <div class="report-card">
+                    <h4>Sector Analysis - Technology Q2 2024</h4>
+                    <p>A comprehensive analysis of the technology sector's performance in Q2 2024, including major players and market movements.</p>
+                    <a href="report-details.html" class="view-button">View Report</a>
+                    <a href="path/to/report.pdf" class="download-button" download>Download PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section class="search-filter">
+            <input type="text" placeholder="Search reports...">
+            <select>
+                <option value="all">All Categories</option>
+                <option value="monthly-performance">Monthly Performance</option>
+                <option value="quarterly-market-review">Quarterly Market Review</option>
+                <option value="Sector Analysis">Sector Analysis</option>
+            </select>
+            <input type="submit" value="Filter">
+        </section>
+
+        <!-- Call-to-Action Section -->
+        <section class="cta">
+            <h2>Get Exclusive Reports</h2>
+            <a href="subscribe.html" class="cta-button">Subscribe Now!</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Trader's Hub. All rights reserved.</p>
+        <p><a href="privacy.html" style="color: #00ff99;">Privacy Policy</a> | <a href="terms.html" style="color: #00ff99;">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

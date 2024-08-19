@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Hub - Landing Page</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000428;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Retro Arcade Header Styling */
+        header {
+            background: linear-gradient(90deg, #00ff99, #00ccff, #ff0099);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ffcc;
+        }
+
+        header .logo {
+            width: 150px;
+            filter: drop-shadow(0 0 5px #00ff99);
+        }
+
+        header h1 {
+            font-family: 'Press Start 2P', cursive; /* Pixelated Arcade Font */
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 0px #ff0099, 4px 4px 0px #00ccff;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: #ff0099;
+            padding: 10px;
+            background: #000;
+            border-radius: 4px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ffcc;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff0099;
+            color: #00ff99;
+            transform: translateY(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('path/to/your-background-image.jpg') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 2px solid #00ffcc;
+        }
+
+        .hero h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3rem;
+            color: #00ff99;
+            text-shadow: 4px 4px 0px #ff0099;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .hero .cta-button {
+            background-color: #ff0099;
+            color: #fff;
+            padding: 15px 30px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #00ff99;
+            color: #000;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: #ff0099;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+            background-color: #000;
+            border-top: 2px solid #00ffcc;
+            border-bottom: 2px solid #00ffcc;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: #00ff99;
+            margin-bottom: 20px;
+        }
+
+        .features .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .features .feature-item {
+            background-color: #111;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #00ffcc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .features .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .features .feature-item h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5rem;
+            color: #ff0099;
+            margin-bottom: 10px;
+        }
+
+        .features .feature-item p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        /* Mini-Game Section */
+        .mini-game {
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 2px solid #00ffcc;
+        }
+
+        .mini-game h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: #00ff99;
+            margin-bottom: 10px;
+        }
+
+        .mini-game input#nickname {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            text-align: center;
+            border: 2px solid #ff0099;
+            background-color: #000;
+            color: #fff;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .mini-game canvas {
+            margin-top: 20px;
+            border: 3px solid #ff0099;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+
+        .mini-game .highscores {
+            margin-top: 20px;
+            font-family: 'Press Start 2P', cursive;
+            color: #00ffcc;
+            text-align: center;
+        }
+
+        .mini-game .highscores ol {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .mini-game .highscores ol li {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+
+        .mini-game .game-over {
+            display: none;
+            font-family: 'Press Start 2P', cursive;
+            color: #ff0099;
+            margin-top: 20px;
+        }
+
+        .mini-game .game-over button {
+            background-color: #ff0099;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .mini-game .game-over button:hover {
+            background-color: #00ff99;
+            color: #000;
+        }
+
+        /* Satoshi Explanation Section */
+        .satoshi-info {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .satoshi-info h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+            color: #00ffcc;
+            margin-bottom: 20px;
+        }
+
+        .satoshi-info p {
+            font-size: 1rem;
+            font-family: 'Press Start 2P', cursive;
+            color: #00ff99;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Call-to-Action Section */
+        .cta {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #111;
+        }
+
+        .cta h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: #00ffcc;
+            margin-bottom: 20px;
+        }
+
+        .cta .cta-button {
+            background-color: #00ff99;
+            color: #000;
+            padding: 15px 30px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta .cta-button:hover {
+            background-color: #00ccff;
+        }
+
+        /* Telegram Invitation Section */
+        .telegram-invitation {
+            padding: 60px 20px;
+            background: linear-gradient(90deg, #00ff99, #00ccff);
+            text-align: center;
+            border-radius: 8px;
+            margin: 40px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .telegram-invitation h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px #fff;
+        }
+
+        .telegram-invitation p {
+            font-size: 1.2rem;
+            color: #000;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .telegram-button {
+            display: inline-block;
+            background-color: #0088cc;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-family: 'Press Start 2P', cursive;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .telegram-button:hover {
+            background-color: #0077bb;
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #000;
+            color: #00ff99;
+            border-top: 2px solid #00ffcc;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .about h2, .features h2, .mini-game h2, .cta h2 {
+                font-size: 2rem;
+            }
+
+            .features .feature-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features .feature-item {
+                width: 90%;
+            }
+
+            .mini-game canvas {
+                width: 90%;
+                height: auto;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Hub</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Trader's Hub - Join the Elite Trading Community">
+    <meta property="og:description" content="Connect with elite traders and access exclusive strategies and insights.">
+    <meta property="og:image" content="https://tradershub.web.app/banner.png">
+    <meta property="og:url" content="https://tradershub.web.app/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags (optional) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trader's Hub - Join the Elite Trading Community">
+    <meta name="twitter:description" content="Connect with elite traders and access exclusive strategies and insights.">
+    <meta name="twitter:image" content="https://tradershub.web.app/banner.png">
+</head>
+
+<body>
+    <header>
+        <h1>Trader's Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="weekly_updates.html">Updates</a></li>
+                <li><a href="quarterly_reports.html">Reports</a></li>
+                <li><a href="auth.html">Login/Sign Up</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Welcome to Trader's Hub</h2>
+            <p>The ultimate space where elite traders share their strategies and insights.</p>
+            <a href="#cta" class="cta-button">Join Us Now!</a>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>About Trader's Hub</h2>
+            <p>Trader's Hub is a community of highly advanced and experienced traders who exchange their trades, strategies, and market insights. Whether you're a seasoned professional or just starting, our platform provides the tools and knowledge you need to succeed in the trading world.</p>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2>Our Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>Real-time Market Analysis</h3>
+                    <p>Stay ahead of the curve with our cutting-edge market analysis tools.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Community Trade Sharing</h3>
+                    <p>Share and discuss trades with other top traders in our community.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Exclusive Reports</h3>
+                    <p>Access exclusive reports and insights that are only available to our members.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini-Game Section -->
+        <section class="mini-game">
+            <h2>Test Your Skills</h2>
+            <input type="text" id="nickname" placeholder="Enter your nickname" />
+            <canvas id="miniGameCanvas" width="600" height="400"></canvas>
+            <div class="highscores">
+                <h3>High Scores</h3>
+                <ol id="highscoreList"></ol>
+            </div>
+            <div class="game-over">
+                <h3>Game Over!</h3>
+                <p>Your Score: <span id="finalScore"></span></p>
+                <button id="restartButton">Restart</button>
+            </div>
+        </section>
+
+        <!-- Satoshi Explanation Section -->
+        <section class="satoshi-info">
+            <h2>What are Satoshis?</h2>
+            <p>Satoshis, often referred to as "Sats," are the smallest unit of Bitcoin. 100,000,000 Satoshis equal 1 Bitcoin. At Trader's Hub, you can earn Sats as rewards for achieving high scores in our mini-game. The top 3 players each week will receive the following rewards:</p>
+            <p>1st Place: 250 Sats<br>
+               2nd Place: 150 Sats<br>
+               3rd Place: 50 Sats</p>
+        </section>
+
+        <!-- Telegram Invitation Section -->
+        <section class="telegram-invitation">
+            <h2>Join Our Telegram Group</h2>
+            <p>Connect with other traders, get real-time updates, and never miss an opportunity. Our Telegram group is the perfect place to stay informed and engaged with the Trader's Hub community.</p>
+            <a href="https://t.me/+LBP_Pqiq9kdiMDc8" class="telegram-button" target="_blank">Join Our Telegram</a>
+        </section>
+
+        <!-- Call-to-Action Section -->
+        <section class="cta" id="cta">
+            <h2>Ready to Take Your Trading to the Next Level?</h2>
+            <a href="signup.html" class="cta-button">Sign Up Now!</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Trader's Hub. All rights reserved.</p>
+        <p><a href="privacy.html" style="color: #00ff99;">Privacy Policy</a> | <a href="terms.html" style="color: #00ff99;">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Mini-game script: Paddle and Ball Game with High Scores, Nickname, and Increasing Difficulty
+        const canvas = document.getElementById('miniGameCanvas');
+        const ctx = canvas.getContext('2d');
+        const nicknameInput = document.getElementById('nickname');
+        let nickname = '';
+
+        let ballRadius = 10;
+        let x = canvas.width / 2;
+        let y = canvas.height - 30;
+        let dx = 2;
+        let dy = -2;
+        let paddleHeight = 10;
+        let paddleWidth = 75;
+        let paddleX = (canvas.width - paddleWidth) / 2;
+        let rightPressed = false;
+        let leftPressed = false;
+        let score = 0;
+        let interval = setInterval(draw, 10);
+        let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+        document.addEventListener('keydown', keyDownHandler, false);
+        document.addEventListener('keyup', keyUpHandler, false);
+        document.getElementById('restartButton').addEventListener('click', restartGame);
+
+        function keyDownHandler(e) {
+            if(e.key == 'Right' || e.key == 'ArrowRight') {
+                rightPressed = true;
+            } else if(e.key == 'Left' || e.key == 'ArrowLeft') {
+                leftPressed = true;
+            }
+        }
+
+        function keyUpHandler(e) {
+            if(e.key == 'Right' || e.key == 'ArrowRight') {
+                rightPressed = false;
+            } else if(e.key == 'Left' || e.key == 'ArrowLeft') {
+                leftPressed = false;
+            }
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+            ctx.fillStyle = "#00ff99";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+            ctx.fillStyle = "#00ff99";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawScore() {
+            ctx.font = "16px 'Press Start 2P'";
+            ctx.fillStyle = "#00ff99";
+            ctx.fillText("Score: " + score, 8, 20);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            drawPaddle();
+            drawScore();
+
+            if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                dx = -dx;
+            }
+            if(y + dy < ballRadius) {
+                dy = -dy;
+            } else if(y + dy > canvas.height - ballRadius) {
+                if(x > paddleX && x < paddleX + paddleWidth) {
+                    dy = -dy;
+                    score++;
+                    dx *= 1.05;  // Increase speed each time the ball hits the paddle
+                    dy *= 1.05;
+                } else {
+                    gameOver();
+                    return;
+                }
+            }
+
+            if(rightPressed && paddleX < canvas.width - paddleWidth) {
+                paddleX += 7;
+            } else if(leftPressed && paddleX > 0) {
+                paddleX -= 7;
+            }
+
+            x += dx;
+            y += dy;
+        }
+
+        function gameOver() {
+            clearInterval(interval);
+            document.querySelector('.game-over').style.display = 'block';
+            document.getElementById('finalScore').textContent = score;
+            saveHighScore(score);
+            displayHighScores();
+        }
+
+        function restartGame() {
+            document.querySelector('.game-over').style.display = 'none';
+            x = canvas.width / 2;
+            y = canvas.height - 30;
+            dx = 2;
+            dy = -2;
+            paddleX = (canvas.width - paddleWidth) / 2;
+            score = 0;
+            interval = setInterval(draw, 10);
+        }
+
+        function saveHighScore(score) {
+            nickname = nicknameInput.value.trim() || 'Anonymous';
+            highScores.push({ name: nickname, score: score });
+            highScores.sort((a, b) => b.score - a.score);
+            highScores = highScores.slice(0, 5);  // Keep only top 5 scores
+            localStorage.setItem("highScores", JSON.stringify(highScores));
+        }
+
+        function displayHighScores() {
+            const highscoreList = document.getElementById('highscoreList');
+            highscoreList.innerHTML = '';
+            highScores.forEach((entry, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${index + 1}. ${entry.name} - ${entry.score}`;
+                if (index === 0) {
+                    li.style.backgroundColor = '#FFD700'; // Gold
+                    li.textContent += " (250 Sats)";
+                } else if (index === 1) {
+                    li.style.backgroundColor = '#C0C0C0'; // Silver
+                    li.textContent += " (150 Sats)";
+                } else if (index === 2) {
+                    li.style.backgroundColor = '#CD7F32'; // Bronze
+                    li.textContent += " (50 Sats)";
+                }
+                highscoreList.appendChild(li);
+            });
+        }
+
+        displayHighScores();
+    </script>
+</body>
+</html>
